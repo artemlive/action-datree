@@ -20,6 +20,8 @@ if [ -z "$DATREE_TOKEN" ]; then
 fi
 
 if [ "$isHelmChart" = "true" ]; then
+    echo "DEBUG: helm datree test $inputpath $cliArguments -- $helmArgs"
+    ls -l ./
     helm datree test $inputpath $cliArguments -- $helmArgs
 elif [ "$isKustomization" = "true" ]; then
     datree kustomize test $inputpath $cliArguments -- $kustomizeArgs
