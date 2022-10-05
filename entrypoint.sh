@@ -11,6 +11,11 @@ printf "datree version: "
 datree version
 printf "\n"
 
+
+printf "helm version: "
+helm version
+printf "\n"
+
 # enable recursive globbing (to support **/*.yaml for instance)
 shopt -s globstar
 
