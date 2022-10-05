@@ -34,6 +34,7 @@ RESULT_JSON_PATH="$HOME/.datree/lastPolicyCheck.json"
 if [ ! -f "$RESULT_JSON_PATH" ]; then
     exit $EXIT_STATUS
 fi
+echo "DEBUG: $(cat $RESULT_JSON_PATH)"
 
 PASSED_YAML=$(jq .evaluationSummary.passedYamlValidationCount "$RESULT_JSON_PATH")
 PASSED_K8S=$(jq .evaluationSummary.k8sValidation "$RESULT_JSON_PATH" | awk -F[\"/] '{print $2}' )
