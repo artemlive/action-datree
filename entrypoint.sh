@@ -37,6 +37,7 @@ if [ ! -f "$RESULT_JSON_PATH" ]; then
     exit $EXIT_STATUS
 fi
 echo "DEBUG: $(cat $RESULT_JSON_PATH)"
+echo "TEMP_GEN_FILE: $(find /tmp/ -iname helmtmp-b* -exec ls -tr {} +| sed 's|.*/||' | tail -n 1)"
 
 PASSED_YAML=$(jq .evaluationSummary.passedYamlValidationCount "$RESULT_JSON_PATH")
 PASSED_K8S=$(jq .evaluationSummary.k8sValidation "$RESULT_JSON_PATH" | awk -F[\"/] '{print $2}' )
